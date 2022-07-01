@@ -10,6 +10,9 @@ SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop';$ProgressPrefe
 
 ARG RUNNER_VERSION=VERSION
 
+# Install latest PowerShell
+RUN Invoke-WebRequest -Uri 'https://aka.ms/install-powershell.ps1' -OutFile install-powershell.ps1; ./install-powershell.ps1 -AddToPath
+
 # Install GitHub Runner
 RUN Invoke-WebRequest -Uri https://github.com/actions/runner/releases/download/v$env:RUNNER_VERSION/actions-runner-win-x64-$env:RUNNER_VERSION.zip -OutFile runner.zip
 RUN Expand-Archive -Path $pwd/runner.zip -DestinationPath C:/actions-runner
