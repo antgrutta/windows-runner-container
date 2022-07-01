@@ -16,4 +16,4 @@ RUN Expand-Archive -Path $pwd/runner.zip -DestinationPath C:/actions-runner
 
 ADD entrypoint.ps1 entrypoint.ps1
 
-CMD [ "pwsh", "entrypoint.ps1"]
+CMD [ "pwsh", ".\\entrypoint.ps1"]
